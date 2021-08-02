@@ -1,0 +1,8 @@
+# Dependency directories
+/node_modules
+
+# Next.js build output
+.next
+
+# Visual Studio Code
+.vscode/*
