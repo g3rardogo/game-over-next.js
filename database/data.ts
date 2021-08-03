@@ -127,7 +127,7 @@ const data: Record<TProductId, TProduct> = {
     },
     x12a93ca: {
       name: 'The Witcher 3: Wild Hunt',
-      id: '01fx789t',
+      id: 'x12a93ca',
       sku: 'MW79ZZ6Y',
       price: 39.99,
       image: '/images/the-witcher.jpg',
