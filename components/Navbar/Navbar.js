@@ -1,0 +1,18 @@
+import React from 'react'
+import Link from "next/link"
+const Navbar = () => {
+    return (
+            <nav>
+                <menu>
+                    <Link href="/" prefetch={false}>
+                        <a>Home</a>
+                    </Link>
+                    <Link href="/about" prefetch={false}>
+                        <a>About</a>
+                    </Link>
+                </menu>
+            </nav>
+    )
+}
+
+export default Navbar
