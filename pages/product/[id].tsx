@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import fetch from "isomorphic-unfetch";
 
 const ProductItem = () => {
   const router = useRouter();
   const [item, setItem] = useState<TProduct[]>([]);
   const { id } = router.query;
   useEffect(() => {
-    window
-      .fetch(`/api/products/${id}`)
+    fetch(`/api/products/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setItem(data);
@@ -36,7 +36,8 @@ const ProductItem = () => {
             display: flex;
             max-width: 1024px;
           }
-          img {
+          .image__container {
+            width: 100%;
           }
         }
         img {
