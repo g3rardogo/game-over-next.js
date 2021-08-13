@@ -4,7 +4,7 @@ import fetch from "isomorphic-unfetch";
 
 const ProductItem = () => {
   const router = useRouter();
-  const [item, setItem] = useState<TProduct[]>([]);
+  const [item, setItem] = useState<any>([]);
   const { id } = router.query;
   useEffect(() => {
     fetch(`/api/products/${id}`)
@@ -13,9 +13,9 @@ const ProductItem = () => {
         setItem(data);
       });
   }, []);
-  console.log(item);
   return (
     <>
+      {console.log(item)}
       <section>
         <div className="image__container">
           <img src={item.image} alt={item.name} />
