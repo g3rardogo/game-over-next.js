@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import ProductList from "@components/ProductList/ProductList";
 
 const Home = () => {
-    const [products, setProducts] = useState<TProduct[]>([])
+  const [productsList, setProductsList] = useState<TProduct[]>([]);
 
-    useEffect(() => {
-        window
-            .fetch('/api/products')
-            .then(response => response.json())
-            .then(({ data, length}) => {
-                setProducts(data)
-            })
-    }, [])
+  useEffect(() => {
+    window
+      .fetch("/api/products")
+      .then((response) => response.json())
+      .then(({ data }: TProductsResponse) => {
+        setProductsList(data);
+      });
+  }, []);
 
-    return (
-        <div>
-            <h1>Hello World</h1>
-        </div>
-    )
-}
+  return <ProductList products={productsList} />;
+};
 
-export default Home
+export default Home;

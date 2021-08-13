@@ -1,14 +1,24 @@
-import React from 'react'
-import Navbar from "@components/Navbar/Navbar"
-
+import React from "react";
+import Navbar from "@components/Navbar/Navbar";
+const background = "/background_mobile.png";
 const Layout: React.FC = ({ children }) => {
-    return (
-        <div>
-            <Navbar/>
-            {children}
-            <footer>This is the footer</footer>
-        </div>
-    )
-}
+  return (
+    <div>
+      <div className="background__container">
+        <Navbar />
+        {children}
+      </div>
+      <footer className="container"></footer>
+      <style jsx>{`
+        .background__container {
+          background-image: url(${background});
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center top;
+        }
+      `}</style>
+    </div>
+  );
+};
 
-export default Layout
+export default Layout;
