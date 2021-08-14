@@ -1,29 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import React from "react";
 import fetch from "isomorphic-unfetch";
+import { GetStaticProps } from "next";
 
-const ProductItem = () => {
-  const router = useRouter();
-  const [item, setItem] = useState<any>([]);
-  const { id } = router.query;
-  useEffect(() => {
-    fetch(`/api/products/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setItem(data);
-      });
-  }, []);
+export const getStaticPaths = async () => {
+  const response = await fetch("https://game-over.vercel.app/api/products");
+  const { data: productsList }: TProductsResponse = await response.json();
+
+  const paths = productsList.map((product) => ({
+    params: {
+      id: product.id,
+    },
+  }));
+
+  return {
+    paths: paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { params } = context;
+  const id = params?.id as string;
+  const response = await fetch(
+    `https://game-over.vercel.app/api/products/${id}`
+  );
+  const product: TProduct = await response.json();
+  return {
+    props: {
+      product,
+    },
+  };
+};
+const ProductItem = ({ product }: { product: TProduct }) => {
   return (
     <>
-      {console.log(item)}
       <section>
         <div className="image__container">
-          <img src={item.image} alt={item.name} />
+          <img src={product.image} alt={product.name} />
         </div>
         <div className="info__container">
-          <h2>{item.name}</h2>
-          <div>${item.price}</div>
-          <p>{item.description}</p>
+          <h2>{product.name}</h2>
+          <div>${product.price}</div>
+          <p>{product.description}</p>
         </div>
       </section>
       <style jsx>{`
