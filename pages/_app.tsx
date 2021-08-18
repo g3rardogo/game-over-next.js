@@ -1,6 +1,5 @@
 import { AppProps } from "next/app";
 import Layout from "@components/Layout/Layout";
-const background = "/background.jpg";
 import "normalize.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
