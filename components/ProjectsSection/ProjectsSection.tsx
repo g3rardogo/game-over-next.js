@@ -41,7 +41,7 @@ const ProjectsSection = () => {
         }
 
         .info__container .navigation {
-          margin-bottom: 8px;
+          margin-bottom: 28px;
         }
 
         .info__container .interaction {
@@ -61,7 +61,7 @@ const ProjectsSection = () => {
         a {
           color: #bbbaba;
           text-decoration: none;
-          margin-right: 8px;
+          margin-right: 18px;
         }
 
         a.active {

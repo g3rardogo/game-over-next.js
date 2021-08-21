@@ -1,6 +1,7 @@
 import React from "react";
 import ProductList from "@components/ProductList/ProductList";
 import ProjectsSection from "@components/ProjectsSection/ProjectsSection";
+import GraphicsSection from "@components/GraphicsSection/GraphicsSection";
 import fetch from "isomorphic-unfetch";
 
 export const getStaticProps = async () => {
@@ -18,6 +19,7 @@ const Home = ({ productsList }: { productsList: TProduct[] }) => {
     <>
       <ProductList products={productsList} />
       <ProjectsSection />
+      <GraphicsSection />
     </>
   );
 };
