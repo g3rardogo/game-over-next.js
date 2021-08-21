@@ -8,6 +8,7 @@ type ProductListProps = {
 const mapProductsToCards = (products: TProduct[]) => (
   <>
     <section>
+      <h2>Suggested games</h2>
       {products.map(({ name, id, price, image, shortDescription }) => (
         <Link href={`/product/${id}`} key={id}>
           <article>

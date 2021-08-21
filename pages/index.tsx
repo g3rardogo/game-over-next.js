@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ProductList from "@components/ProductList/ProductList";
+import ProjectsSection from "@components/ProjectsSection/ProjectsSection";
 import fetch from "isomorphic-unfetch";
 
 export const getStaticProps = async () => {
@@ -13,7 +14,12 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ productsList }: { productsList: TProduct[] }) => {
-  return <ProductList products={productsList} />;
+  return (
+    <>
+      <ProductList products={productsList} />
+      <ProjectsSection />
+    </>
+  );
 };
 
 export default Home;

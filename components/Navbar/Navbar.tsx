@@ -1,6 +1,5 @@
 import React from "react";
 import { FaSearch, FaBell, FaUserCircle } from "react-icons/fa";
-import { IconContext } from "react-icons";
 
 const Navbar = () => {
   return (
