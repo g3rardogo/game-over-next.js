@@ -33,7 +33,6 @@ const mapProductsToCards = (products: TProduct[]) => (
       article {
         display: flex;
         flex-direction: column;
-        max-width: 320px;
         margin: 0 auto 32px;
         padding: 18px;
         background-color: #68528897;
@@ -59,12 +58,11 @@ const mapProductsToCards = (products: TProduct[]) => (
 
       @media (min-width: 568px) {
         article {
-          max-width: 580px;
           flex-direction: row;
         }
 
         img {
-          width: 160px;
+          width: 170px;
           height: 260px;
         }
 

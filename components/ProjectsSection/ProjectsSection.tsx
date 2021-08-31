@@ -78,7 +78,6 @@ const ProjectsSection = () => {
         article {
           display: flex;
           flex-direction: column;
-          max-width: 320px;
           margin: 0 auto 32px;
           padding: 18px;
           background-color: #68528897;
@@ -97,6 +96,26 @@ const ProjectsSection = () => {
           border: 1px solid #bbbaba;
           border-radius: 24px;
           font-size: 14px;
+        }
+
+        @media (min-width: 568px) {
+          .info__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .info__container div {
+            width: fit-content;
+          }
+
+          .info__container .navigation {
+            margin-bottom: 0;
+          }
+
+          article .info__container {
+            display: block;
+          }
         }
       `}</style>
     </section>

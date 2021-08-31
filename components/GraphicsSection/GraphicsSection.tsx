@@ -106,7 +106,6 @@ const GraphicsSection = () => {
         article {
           display: flex;
           flex-direction: column;
-          max-width: 320px;
           margin: 0 auto 32px;
           padding: 18px;
           background-color: #68528897;
@@ -142,6 +141,30 @@ const GraphicsSection = () => {
         }
         article .info__container .date__container p {
           color: #bbbaba;
+        }
+
+        @media (min-width: 568px) {
+          article {
+            flex-direction: row;
+          }
+          .info__container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .info__container .navigation {
+            margin-bottom: 0;
+          }
+
+          article .info__container {
+            display: block;
+          }
+
+          article .image__container {
+            width: 60%;
+            margin-right: 24px;
+          }
         }
       `}</style>
     </section>
