@@ -25,16 +25,25 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `https://game-over.vercel.app/api/products/${id}`
   );
   const product: TProduct = await response.json();
+  const bestGames = await fetch("https://game-over.vercel.app/api/products");
+  const { data: productsList }: TProductsResponse = await bestGames.json();
   return {
     props: {
       product,
+      productsList,
     },
   };
 };
-const ProductItem = ({ product }: { product: TProduct }) => {
+const ProductItem = ({
+  product,
+  productsList,
+}: {
+  product: TProduct;
+  productsList: TProduct[];
+}) => {
   return (
     <>
-      <section>
+      <section className="game__section">
         <div className="image__container">
           <img src={product.image} alt={product.name} />
         </div>
@@ -44,21 +53,39 @@ const ProductItem = ({ product }: { product: TProduct }) => {
           <p>{product.description}</p>
         </div>
       </section>
+      <section className="best-games__section">
+        <h2>Best Games</h2>
+        <p>Explore our best games</p>
+        {productsList.slice(1, 4).map((game) => (
+          <article key={game.id}>
+            <div className="image__container">
+              <img src={game.image} alt={game.name} />
+            </div>
+            <div className="info__container">
+              <h3>{game.name}</h3>
+              <div>${game.price}</div>
+              <div className="view">VIEW THE GAME</div>
+            </div>
+          </article>
+        ))}
+      </section>
       <style jsx>{`
         section {
           max-width: 320px;
           margin: 0 auto 32px;
         }
+
         @media (min-width: 568px) {
-          section {
+          .game__section {
             display: flex;
             max-width: 1024px;
           }
-          .image__container {
+          .game__section .image__container {
             width: 100%;
           }
         }
-        img {
+
+        .image__container img {
           width: 100%;
           border-top-left-radius: 25px;
           border-top-right-radius: 25px;
@@ -84,8 +111,32 @@ const ProductItem = ({ product }: { product: TProduct }) => {
         }
 
         .info__container p {
-          color: #e2d5d5;
+          line-height: 1.5rem;
           font-weight: 300;
+          color: #e2d5d5;
+        }
+
+        .best-games__section h2 {
+          margin: 0;
+        }
+
+        .best-games__section p {
+          margin: 8px 0 24px 0;
+          color: #e2d5d5;
+        }
+
+        .best-games__section article {
+          margin-bottom: 24px;
+        }
+
+        .best-games__section .info__container div {
+          display: block;
+          width: fit-content;
+        }
+
+        .best-games__section .info__container .view {
+          background-color: #c746a06c;
+          border: 1px solid #b1289f;
         }
       `}</style>
     </>

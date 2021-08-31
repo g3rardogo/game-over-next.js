@@ -47,6 +47,7 @@ const mapProductsToCards = (products: TProduct[]) => (
       p {
         color: #e2d5d5;
         font-weight: 300;
+        line-height: 1.5rem;
       }
 
       .info__container div {

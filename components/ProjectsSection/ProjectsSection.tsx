@@ -71,6 +71,7 @@ const ProjectsSection = () => {
 
         p {
           margin: 0 8px 0 0;
+          line-height: 1.5rem;
           color: #bbbaba;
         }
 

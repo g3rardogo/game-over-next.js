@@ -15,6 +15,7 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ productsList }: { productsList: TProduct[] }) => {
+  console.log(productsList);
   return (
     <>
       <ProductList products={productsList} />
